@@ -4,93 +4,840 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanskruti Supekar | Portfolio</title>
+
+    <meta name="description" content="Sanskruti Supekar - Computer Science student and aspiring Web Developer. Explore my skills, education and portfolio.">
+
+    <title>Sanskruti Supekar | Developer Portfolio</title>
 
     <style>
+        /* GENERAL SETTINGS */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #0ea5e9;
+            --dark: #172554;
+            --text: #334155;
+            --light: #eff6ff;
+            --white: #ffffff;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #101827;
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .container {
-            max-width: 650px;
-            margin: auto;
-            padding: 35px;
-            background: #1e293b;
-            border-radius: 15px;
-        }
-
-        h1 {
-            color: #38bdf8;
-        }
-
-        p {
-            line-height: 1.8;
-            color: #cbd5e1;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f8fafc;
+            color: var(--text);
+            line-height: 1.7;
         }
 
         a {
-            color: #38bdf8;
             text-decoration: none;
         }
 
-        button {
-            padding: 12px 22px;
-            background: #38bdf8;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
         }
+
+        /* NAVBAR */
+
+        header {
+            background: rgba(255,255,255,0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            min-height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 27px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* HERO SECTION */
+
+        .hero {
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(120deg, #eff6ff, #ffffff);
+        }
+
+        .hero-content {
+            padding: 85px 0;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 7px 16px;
+            border-radius: 30px;
+            background: #dbeafe;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 7vw, 65px);
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero h2 {
+            color: #475569;
+            font-size: clamp(20px, 3vw, 27px);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            margin: 5px 8px 5px 0;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* COMMON SECTION */
+
+        section {
+            padding: 85px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            color: var(--dark);
+            font-size: 34px;
+        }
+
+        .section-title span {
+            display: block;
+            width: 65px;
+            height: 4px;
+            background: var(--primary);
+            margin: 12px auto;
+            border-radius: 10px;
+        }
+
+        .section-title p {
+            color: #64748b;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: white;
+        }
+
+        .about-box {
+            max-width: 850px;
+            margin: auto;
+            padding: 30px;
+            background: var(--light);
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .about-box p {
+            margin-bottom: 15px;
+        }
+
+        /* SKILLS */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 25px 12px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+        }
+
+        .skill-card h3 {
+            color: var(--dark);
+            font-size: 17px;
+        }
+
+        .skill-card p {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            background: white;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 28px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(37,99,235,0.10);
+        }
+
+        .project-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .project-link {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* EDUCATION */
+
+        .education-card {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        .education-card h3 {
+            color: var(--dark);
+        }
+
+        .education-card p {
+            margin-top: 7px;
+        }
+
+        /* CERTIFICATION */
+
+        .certificate {
+            background: white;
+        }
+
+        .certificate-card {
+            max-width: 750px;
+            margin: auto;
+            padding: 28px;
+            background: var(--light);
+            border-radius: 12px;
+        }
+
+        .certificate-card h3 {
+            color: var(--dark);
+        }
+
+        /* CONTACT */
+
+        .contact {
+            background: #eff6ff;
+        }
+
+        .contact-box {
+            text-align: center;
+        }
+
+        .contact-box p {
+            margin: 12px 0;
+        }
+
+        .contact-box a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* ANIMATIONS */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: all 0.7s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* MOBILE RESPONSIVENESS */
+
+        @media (max-width: 768px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+                gap: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.08);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            section {
+                padding: 65px 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .skill-card {
+                padding: 18px 8px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>Hi, I'm Sanskruti! 👋</h1>
+    <!-- NAVBAR -->
 
-        <h2>Aspiring Web Developer</h2>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">Sanskruti.</a>
 
-        <p>
-            I am a B.Sc. Computer Science student
-            passionate about programming and web development.
-        </p>
+                <button class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false">
+                    ☰
+                </button>
 
-        <h3>My Skills</h3>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        <p>
-            HTML | CSS | JavaScript | Java |
-            Python | C | C++ | SQL
-        </p>
 
-        <h3>About Me</h3>
+    <!-- HERO -->
 
-        <p>
-            I love learning new technologies and
-            building creative projects.
-        </p>
+    <section class="hero" id="home">
+        <div class="container hero-content reveal">
 
-        <button onclick="showMessage()">
-            Say Hello!
-        </button>
+            <span class="tag">Welcome to my portfolio 👋</span>
 
-        <p id="message"></p>
+            <h1>Hi, I'm <span>Sanskruti Supekar</span></h1>
 
-        <p>
-            <a href="https://www.linkedin.com/in/sanskruti-supekar-110275393/">
-                Connect with me on LinkedIn
+            <h2>Aspiring Web Developer & Software Developer</h2>
+
+            <p>
+                I'm a B.Sc. Computer Science student passionate
+                about programming, web technologies and creating
+                meaningful digital experiences. I'm continuously
+                learning and improving my technical skills.
+            </p>
+
+            <a href="#projects" class="btn btn-primary">
+                Explore My Work
             </a>
-        </p>
+
+            <a href="#contact" class="btn btn-outline">
+                Contact Me
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+        <div class="container">
+
+            <div class="section-title reveal">
+                <h2>About Me</h2>
+                <span></span>
+                <p>Get to know me</p>
+            </div>
+
+            <div class="about-box reveal">
+
+                <p>
+                    Hello! I'm Sanskruti Somnath Supekar,
+                    a Computer Science student at Indira College
+                    of Commerce and Science.
+                </p>
+
+                <p>
+                    I have a strong interest in web development
+                    and software development. I enjoy learning
+                    programming languages, understanding how
+                    applications work and exploring new technologies.
+                </p>
+
+                <p>
+                    My goal is to grow as a developer, gain
+                    practical experience and contribute to
+                    real-world technology projects.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+        <div class="container">
+
+            <div class="section-title reveal">
+                <h2>Technical Skills</h2>
+                <span></span>
+                <p>Technologies and tools I'm familiar with</p>
+            </div>
+
+            <div class="skills-grid reveal">
+
+                <div class="skill-card">
+                    <h3>HTML</h3>
+                    <p>Web Structure</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>CSS</h3>
+                    <p>Web Styling</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>JavaScript</h3>
+                    <p>Web Interactivity</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Java</h3>
+                    <p>Programming</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Python</h3>
+                    <p>Programming</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>C</h3>
+                    <p>Programming</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>C++</h3>
+                    <p>Programming</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>SQL / MySQL</h3>
+                    <p>Database</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>OOP</h3>
+                    <p>Programming Concepts</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Excel</h3>
+                    <p>Productivity Tool</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Power BI</h3>
+                    <p>Course Exposure</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section class="projects" id="projects">
+        <div class="container">
+
+            <div class="section-title reveal">
+                <h2>My Projects</h2>
+                <span></span>
+                <p>My development journey</p>
+            </div>
+
+            <div class="project-grid reveal">
+
+                <div class="project-card">
+
+                    <div class="project-icon">💻</div>
+
+                    <h3>Personal Portfolio Website</h3>
+
+                    <p>
+                        A responsive personal portfolio website
+                        showcasing my introduction, technical skills,
+                        education and contact information.
+                    </p>
+
+                    <p><strong>Technologies:</strong>
+                        HTML, CSS, JavaScript
+                    </p>
+
+                    <a class="project-link"
+                       href="https://github.com/SanskrutiSup/web-development-projects"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        View on GitHub →
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- EDUCATION -->
+
+    
+<!-- EDUCATION -->
+
+<section id="education">
+    <div class="container">
+
+        <div class="section-title reveal">
+            <h2>Education</h2>
+            <span></span>
+            <p>My Academic Journey</p>
+        </div>
+
+        <div class="education-card reveal">
+            <h3>B.Sc. Computer Science</h3>
+            <p><strong>Indira College of Commerce and Science</strong></p>
+            <p>Expected Graduation: 2027</p>
+        </div>
+
+        <br>
+
+        <div class="education-card reveal">
+            <h3>12th Standard (HSC)</h3>
+            <p><strong>S P College</strong></p>
+            <p>Board: State Board </p>
+            <p>Passing Year: 2022</p>
+            <p>Percentage: 50%</p>
+        </div>
+
+        <br>
+
+        <div class="education-card reveal">
+            <h3>10th Standard (SSC)</h3>
+            <p><strong>Spicer Higher secondary School</strong></p>
+            <p>Board:ICSE </p>
+            <p>Passing Year: 2020 </p>
+            <p>Percentage: 89%</p>
+        </div>
+
     </div>
+</section>
+
+
+
+    <!-- CERTIFICATION -->
+
+    <section class="certificate" id="certifications">
+        <div class="container">
+
+            <div class="section-title reveal">
+                <h2>Certifications</h2>
+                <span></span>
+                <p>Courses and learning achievements</p>
+            </div>
+
+            <div class="certificate-card reveal">
+
+                <h3>MySQL with Power BI</h3>
+
+                <p>
+                    Certification Course – Sujata Institute
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+        <div class="container">
+
+            <div class="section-title reveal">
+                <h2>Get In Touch</h2>
+                <span></span>
+                <p>Let's connect and explore opportunities</p>
+            </div>
+
+            <div class="contact-box reveal">
+
+                <p>
+                    📧 Email:
+                    <a href="mailto:s20222715@gmail.com">
+                        s20222715@gmail.com
+                    </a>
+                </p>
+
+                <p>
+                    📞 Phone:
+                    <a href="tel:8407975000">
+                        8407975000
+                    </a>
+                </p>
+
+                <p>
+                    💼 LinkedIn:
+                    <a href="https://www.linkedin.com/in/sanskruti-supekar-110275393/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Visit My LinkedIn
+                    </a>
+                </p>
+
+                <p>
+                    🐙 GitHub:
+                    <a href="https://github.com/SanskrutiSup"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Visit My GitHub
+                    </a>
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        <p>
+            © <span id="year"></span> Sanskruti Somnath Supekar.
+            All Rights Reserved.
+        </p>
+
+        <p>Designed and developed with 💙</p>
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
 
     <script>
-        function showMessage() {
-            document.getElementById("message").innerHTML =
-                "Thanks for visiting my portfolio! 😊";
-        }
+
+        // MOBILE NAVIGATION
+
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+
+        menuBtn.addEventListener("click", function () {
+
+            const isOpen = navLinks.classList.toggle("show");
+
+            menuBtn.setAttribute("aria-expanded", isOpen);
+            menuBtn.textContent = isOpen ? "✕" : "☰";
+
+        });
+
+        // CLOSE MENU AFTER CLICKING A LINK
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", function () {
+
+                navLinks.classList.remove("show");
+                menuBtn.textContent = "☰";
+                menuBtn.setAttribute("aria-expanded", "false");
+
+            });
+
+        });
+
+        // SCROLL REVEAL ANIMATION
+
+        const observer = new IntersectionObserver((entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("active");
+
+                }
+
+            });
+
+        }, {
+            threshold: 0.12
+        });
+
+        document.querySelectorAll(".reveal").forEach(element => {
+
+            observer.observe(element);
+
+        });
+
+        // AUTOMATIC COPYRIGHT YEAR
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
     </script>
 
 </body>
